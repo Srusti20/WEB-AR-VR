@@ -1,0 +1,161 @@
+public class Calculator {
+
+    // Addition
+    public int add(int a, int b) {
+        return a + b;
+    }
+
+    // Subtraction
+    public int subtract(int a, int b) {
+        return a - b;
+    }
+
+    // Multiplication
+    public int multiply(int a, int b) {
+        return a * b;
+    }
+
+    // Division
+    public double divide(int a, int b) {
+        if (b == 0) {
+            throw new ArithmeticException("Cannot divide by zero");
+        }
+        return (double) a / b;
+    }
+
+    // Modulus
+    public int modulus(int a, int b) {
+        return a % b;
+    }
+}
+
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class CalculatorTest {
+
+    Calculator calc = new Calculator();
+
+    @Test
+    void testAddition() {
+        assertEquals(10, calc.add(7, 3));
+    }
+
+    @Test
+    void testSubtraction() {
+        assertEquals(4, calc.subtract(7, 3));
+    }
+
+    @Test
+    void testMultiplication() {
+        assertEquals(21, calc.multiply(7, 3));
+    }
+
+    @Test
+    void testDivision() {
+        assertEquals(2.0, calc.divide(6, 3));
+    }
+
+    @Test
+    void testDivisionByZero() {
+        Exception exception = assertThrows(ArithmeticException.class, () -> {
+            calc.divide(5, 0);
+        });
+        assertEquals("Cannot divide by zero", exception.getMessage());
+    }
+
+    @Test
+    void testModulus() {
+        assertEquals(1, calc.modulus(7, 3));
+    }
+}
+
+Greatest Number
+public class GreatestNumber {
+
+    // Method to find the greatest of two numbers
+    public int findGreatest(int a, int b) {
+        if (a >= b) {
+            return a;
+        } else {
+            return b;
+        }
+    }
+}
+
+Greatest Number Test
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class GreatestNumberTest {
+
+    GreatestNumber gn = new GreatestNumber();
+
+    // Test case 1: First number is greater
+    @Test
+    void testFirstGreater() {
+        assertEquals(10, gn.findGreatest(10, 5));
+    }
+
+    // Test case 2: Second number is greater
+    @Test
+    void testSecondGreater() {
+        assertEquals(20, gn.findGreatest(10, 20));
+    }
+
+    // Test case 3: Both numbers are equal
+    @Test
+    void testEqualNumbers() {
+        assertEquals(5, gn.findGreatest(5, 5));
+    }
+
+    // Test case 4: Negative numbers
+    @Test
+    void testNegativeNumbers() {
+        assertEquals(-1, gn.findGreatest(-1, -5));
+    }
+}
+
+Grade
+import java.util.Scanner;
+public class Grade{
+    static char func(double avg){
+        if(avg>=90) return 'A';
+        else if(avg>=80) return 'B';
+        else if(avg>=70) return 'C';
+        else if(avg>=60) return 'D';
+        else if(avg>=50) return 'E';
+        else return 'F';
+    }
+    public static void main(String[] args){
+        Scanner scan=new Scanner(System.in);
+        System.out.print("Enter marks: ");
+        double marks=scan.nextDouble();
+        System.out.print("Grade: "+func(marks));
+    }
+}
+
+Pom.xml
+<plugins>
+        <plugin>
+            <groupId>org.jacoco</groupId>
+            <artifactId>jacoco-maven-plugin</artifactId>
+            <version>0.8.11</version>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>prepare-agent</goal>
+                    </goals>
+                </execution>
+                <execution>
+                    <id>report</id>
+                    <phase>test</phase>
+                    <goals>
+                        <goal>report</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+    </plugins>
+
